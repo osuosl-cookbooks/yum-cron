@@ -20,22 +20,21 @@
 package 'yum-cron'
 
 %w(daily hourly).each do |t|
-  if node['yum-cron']["#{t}_conf"]
-    template node['yum-cron']["#{t}_conf"] do
-      owner 'root'
-      group 'root'
-      mode 0640
-      if node['platform_version'].to_i > 6
-        variables(
-          commands: node['yum-cron'][t]['commands'],
-          emitters: node['yum-cron'][t]['emitters'],
-          email: node['yum-cron'][t]['email'],
-          groups: node['yum-cron'][t]['groups'],
-          base: node['yum-cron'][t]['base']
-        )
-      end
-      notifies :restart, 'service[yum-cron]', :delayed
+  next unless node['yum-cron']["#{t}_conf"]
+  template node['yum-cron']["#{t}_conf"] do
+    owner 'root'
+    group 'root'
+    mode 0640
+    if node['platform_version'].to_i > 6
+      variables(
+        commands: node['yum-cron'][t]['commands'],
+        emitters: node['yum-cron'][t]['emitters'],
+        email: node['yum-cron'][t]['email'],
+        groups: node['yum-cron'][t]['groups'],
+        base: node['yum-cron'][t]['base']
+      )
     end
+    notifies :restart, 'service[yum-cron]', :delayed
   end
 end
 
