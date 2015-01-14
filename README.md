@@ -1,5 +1,7 @@
 # yum-cron Cookbook
 
+![Travis Button](https://travis-ci.org/osuosl-cookbooks/yum-cron.svg)
+
 The yum-cron cookbook takes over management of the `yum-cron` package and
 service. This provides an automatic way to upgrade any yum based operating
 system.

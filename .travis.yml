@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.1
+install:
+  - bundle install --retry=3
+cache: bundler
+script:
+  - bundle exec rubocop
+  - bundle exec foodcritic -f any .
