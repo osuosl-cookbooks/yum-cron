@@ -8,12 +8,12 @@ describe service('yum-cron') do
 end
 
 if os[:release] < '7.0'
-  describe file ('/etc/cron.daily/0yum.cron') do
+  describe file('/etc/cron.daily/0yum.cron') do
     it { should be_file }
     it { should be_executable }
   end
 
-  describe file ('/etc/sysconfig/yum-cron') do
+  describe file('/etc/sysconfig/yum-cron') do
     its(:content) { should match /CHECK_ONLY="no"/ }
     its(:content) { should match /CHECK_FIRST="no"/ }
     its(:content) { should match /DOWNLOAD_ONLY="no"/ }
@@ -29,7 +29,7 @@ if os[:release] < '7.0'
   end
 else
   %w(daily hourly).each do |i|
-    describe file ("/etc/cron.#{i}/0yum-#{i}.cron") do
+    describe file("/etc/cron.#{i}/0yum-#{i}.cron") do
       it { should be_file }
       it { should be_executable }
     end

@@ -27,11 +27,11 @@ package 'yum-cron'
       mode 0640
       if node['platform_version'].to_i > 6
         variables(
-          :commands => node['yum-cron'][t]['commands'],
-          :emitters => node['yum-cron'][t]['emitters'],
-          :email => node['yum-cron'][t]['email'],
-          :groups => node['yum-cron'][t]['groups'],
-          :base => node['yum-cron'][t]['base']
+          commands: node['yum-cron'][t]['commands'],
+          emitters: node['yum-cron'][t]['emitters'],
+          email: node['yum-cron'][t]['email'],
+          groups: node['yum-cron'][t]['groups'],
+          base: node['yum-cron'][t]['base']
         )
       end
       notifies :restart, 'service[yum-cron]', :delayed
