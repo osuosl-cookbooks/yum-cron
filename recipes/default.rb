@@ -19,35 +19,23 @@
 
 package 'yum-cron'
 
-template node['yum-cron']['daily_conf'] do
-  owner 'root'
-  group 'root'
-  mode 0640
-  if node['platform_version'].to_i > 6
-    variables(
-      :commands => node['yum-cron']['daily']['commands'],
-      :emitters => node['yum-cron']['daily']['emitters'],
-      :email => node['yum-cron']['daily']['email'],
-      :groups => node['yum-cron']['daily']['groups'],
-      :base => node['yum-cron']['daily']['base']
-    )
-  end
-  notifies :restart, 'service[yum-cron]', :delayed
-end
-
-if node['yum-cron']['hourly_conf']
-  template node['yum-cron']['hourly_conf'] do
-    owner 'root'
-    group 'root'
-    mode 0640
-    variables(
-      :commands => node['yum-cron']['hourly']['commands'],
-      :emitters => node['yum-cron']['hourly']['emitters'],
-      :email => node['yum-cron']['hourly']['email'],
-      :groups => node['yum-cron']['hourly']['groups'],
-      :base => node['yum-cron']['hourly']['base']
-    )
-    notifies :restart, 'service[yum-cron]', :delayed
+%w(daily hourly).each do |t|
+  if node['yum-cron']["#{t}_conf"]
+    template node['yum-cron']["#{t}_conf"] do
+      owner 'root'
+      group 'root'
+      mode 0640
+      if node['platform_version'].to_i > 6
+        variables(
+          :commands => node['yum-cron'][t]['commands'],
+          :emitters => node['yum-cron'][t]['emitters'],
+          :email => node['yum-cron'][t]['email'],
+          :groups => node['yum-cron'][t]['groups'],
+          :base => node['yum-cron'][t]['base']
+        )
+      end
+      notifies :restart, 'service[yum-cron]', :delayed
+    end
   end
 end
 
