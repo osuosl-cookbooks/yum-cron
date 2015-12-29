@@ -6,5 +6,5 @@ description      'Installs/Configures yum-cron'
 long_description 'Installs/Configures yum-cron'
 version          '0.1.0'
 
-supports         'centos', '~> 6'
-supports         'centos', '~> 7'
+supports         'centos', '~> 6.0'
+supports         'centos', '~> 7.0'
