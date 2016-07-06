@@ -40,7 +40,7 @@ else
       its(:content) { should match /update_cmd = default/ }
       its(:content) { should match /system_name = None/ }
       its(:content) { should match /emit_via = stdio/ }
-      its(:content) { should match /ouput_width = 80/ }
+      its(:content) { should match /output_width = 80/ }
       its(:content) { should match /email_from = root@localhost/ }
       its(:content) { should match /email_to = root/ }
       its(:content) { should match /email_host = localhost/ }
