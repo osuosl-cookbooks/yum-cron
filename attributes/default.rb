@@ -27,7 +27,7 @@ when 7
   default['yum-cron']['daily']['emitters'] = {
     'system_name' => 'None',
     'emit_via' => 'stdio',
-    'ouput_width' => 80
+    'output_width' => 80
   }
   default['yum-cron']['daily']['email'] = {
     'email_from' => 'root@localhost',
@@ -54,7 +54,7 @@ when 7
   default['yum-cron']['hourly']['emitters'] = {
     'system_name' => 'None',
     'emit_via' => 'stdio',
-    'ouput_width' => 80
+    'output_width' => 80
   }
   default['yum-cron']['hourly']['email'] = {
     'email_from' => 'root@localhost',
