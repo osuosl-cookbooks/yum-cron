@@ -7,3 +7,6 @@ AllCops:
 Lint/AmbiguousRegexpLiteral:
   Exclude:
     - 'test/integration/**/*.rb'
+
+Style/NumericLiteralPrefix:
+  EnforcedOctalStyle: zero_only
