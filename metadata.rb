@@ -1,4 +1,6 @@
 name             'yum-cron'
+issues_url       'https://github.com/osuosl-cookbooks/yum-cron/issues'
+source_url       'https://github.com/osuosl-cookbooks/yum-cron'
 maintainer       'Oregon State University'
 maintainer_email 'chef@osuosl.org'
 license          'Apache 2.0'
