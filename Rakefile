@@ -122,6 +122,7 @@ end
 
 desc 'Run RSpec (unit) tests'
 task :unit do
+  run_command('rm -f Berksfile.lock')
   run_command('rspec')
 end
 
