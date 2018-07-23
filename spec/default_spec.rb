@@ -32,7 +32,7 @@ describe 'yum-cron::default' do
             /^debuglevel = -2$/,
             /^skip_broken = False$/,
             /^mdpolicy = group:main$/,
-            /^assumeyes = False$/
+            /^assumeyes = False$/,
           ].each do |regex|
             it do
               expect(chef_run).to render_file(file.name)
@@ -63,7 +63,7 @@ describe 'yum-cron::default' do
             /^debuglevel = -2$/,
             /^skip_broken = False$/,
             /^mdpolicy = group:main$/,
-            /^assumeyes = False$/
+            /^assumeyes = False$/,
           ].each do |regex|
             it do
               expect(chef_run).to render_file(file.name)
@@ -94,7 +94,7 @@ describe 'yum-cron::default' do
             /^DAYS_OF_WEEK=\"0123456\"$/,
             /^CLEANDAY=\"0\"$/,
             /^SERVICE_WAITS=\"yes\"$/,
-            /^SERVICE_WAIT_TIME=\"300\"$/
+            /^SERVICE_WAIT_TIME=\"300\"$/,
           ].each do |regex|
             it do
               expect(chef_run).to render_file(file.name)
