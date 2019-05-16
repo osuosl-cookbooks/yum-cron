@@ -32,34 +32,34 @@ else
   end
 
   %w(yum-cron yum-cron-hourly).each do |file|
-    describe file("/etc/yum/#{file}.conf") do
-      its('content') { should match /update_cmd = default/ }
-      its('content') { should match /system_name = None/ }
-      its('content') { should match /emit_via = stdio/ }
-      its('content') { should match /output_width = 80/ }
-      its('content') { should match /email_from = root@localhost/ }
-      its('content') { should match /email_to = root/ }
-      its('content') { should match /email_host = localhost/ }
-      its('content') { should match /group_list = None/ }
-      its('content') { should match /group_package_types = mandatory, default/ }
-      its('content') { should match /debuglevel = -2/ }
-      its('content') { should match /skip_broken = False/ }
-      its('content') { should match /mdpolicy = group:main/ }
-      its('content') { should match /assumeyes = False/ }
+    describe ini("/etc/yum/#{file}.conf") do
+      its('commands.update_cmd') { should match 'default' }
+      its('emitters.system_name') { should match 'None' }
+      its('emitters.emit_via') { should match 'stdio' }
+      its('emitters.output_width') { should match '80' }
+      its('email.email_from') { should match 'root@localhost' }
+      its('email.email_to') { should match 'root' }
+      its('email.email_host') { should match 'localhost' }
+      its('groups.group_list') { should match 'None' }
+      its('groups.group_package_types') { should match 'mandatory, default' }
+      its('base.debuglevel') { should match '-2' }
+      its('base.skip_broken') { should match 'False' }
+      its('base.mdpolicy') { should match 'group:main' }
+      its('base.assumeyes') { should match 'False' }
     end
   end
 
-  describe file('/etc/yum/yum-cron.conf') do
-    its('content') { should match /update_messages = yes/ }
-    its('content') { should match /download_updates = yes/ }
-    its('content') { should match /apply_updates = yes/ }
-    its('content') { should match /random_sleep = 360/ }
+  describe ini('/etc/yum/yum-cron.conf') do
+    its('commands.update_messages') { should match 'yes' }
+    its('commands.download_updates') { should match 'yes' }
+    its('commands.apply_updates') { should match 'yes' }
+    its('commands.random_sleep') { should match '360' }
   end
 
-  describe file('/etc/yum/yum-cron-hourly.conf') do
-    its('content') { should match /update_messages = no/ }
-    its('content') { should match /download_updates = no/ }
-    its('content') { should match /apply_updates = no/ }
-    its('content') { should match /random_sleep = 15/ }
+  describe ini('/etc/yum/yum-cron-hourly.conf') do
+    its('commands.update_messages') { should match 'no' }
+    its('commands.download_updates') { should match 'no' }
+    its('commands.apply_updates') { should match 'no' }
+    its('commands.random_sleep') { should match '15' }
   end
 end
