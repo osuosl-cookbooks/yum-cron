@@ -1,18 +1,34 @@
 require 'spec_helper'
 
 describe 'yum-cron::default' do
-  [CENTOS_7_OPTS, CENTOS_6_OPTS].each do |pltfrm|
+  [CENTOS_8, CENTOS_7, CENTOS_6].each do |pltfrm|
     describe "on #{pltfrm[:platform]} #{pltfrm[:version]}" do
       cached(:chef_run) do
         ChefSpec::SoloRunner.new(pltfrm).converge(described_recipe)
       end
 
-      it do
-        expect(chef_run).to install_package('yum-cron')
-      end
-
       case pltfrm
-      when CENTOS_7_OPTS
+      when CENTOS_8
+        it do
+          expect(chef_run).to_not install_package('yum-cron')
+        end
+        it do
+          expect(chef_run).to_not create_template('/etc/yum/yum-cron-hourly.conf')
+        end
+        it do
+          expect(chef_run).to_not create_template('/etc/sysconfig/yum-cron')
+        end
+        it do
+          expect(chef_run).to_not create_template('/etc/yum/yum-cron.conf')
+        end
+        it do
+          expect(chef_run).to_not enable_service('yum-cron')
+        end
+
+      when CENTOS_7
+        it do
+          expect(chef_run).to install_package('yum-cron')
+        end
         describe 'template /etc/yum/yum-cron.conf' do
           let(:file) { chef_run.template('/etc/yum/yum-cron.conf') }
           [
@@ -77,8 +93,14 @@ describe 'yum-cron::default' do
         it do
           expect(chef_run).to_not create_template('/etc/sysconfig/yum-cron')
         end
+        it do
+          expect(chef_run).to enable_service('yum-cron')
+        end
 
-      when CENTOS_6_OPTS
+      when CENTOS_6
+        it do
+          expect(chef_run).to install_package('yum-cron')
+        end
         describe 'template /etc/sysconfig/yum-cron' do
           let(:file) { chef_run.template('/etc/sysconfig/yum-cron') }
           [
@@ -115,10 +137,9 @@ describe 'yum-cron::default' do
         it do
           expect(chef_run).to start_service('yum-cron')
         end
-      end
-
-      it do
-        expect(chef_run).to enable_service('yum-cron')
+        it do
+          expect(chef_run).to enable_service('yum-cron')
+        end
       end
     end
   end

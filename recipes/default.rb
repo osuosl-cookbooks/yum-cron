@@ -16,6 +16,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+if node['platform_version'].to_i >= 8
+  Chef::Log.warn('yum-cron is only supported on EL7 and below')
+  return
+end
 
 package 'yum-cron'
 
