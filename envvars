@@ -1,0 +1,4 @@
+cookbook=yum-cron
+version=1.0.0
+envs=~
+pr_link=https://github.com/osuosl-cookbooks/yum-cron/pull/9
