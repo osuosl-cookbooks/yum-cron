@@ -1,3 +1,7 @@
+1.1.1 (2020-01-16)
+------------------
+- Chef 14 post-migration fixes
+
 1.1.0 (2019-10-23)
 ------------------
 - Skip convergence on CentOS 8 as yum-cron has been replaced with dnf-automatic
