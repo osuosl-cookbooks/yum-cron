@@ -1,0 +1,6 @@
+AllCops:
+  TargetChefVersion: 15.latest
+ChefModernize/FoodcriticComments:
+  Enabled: true
+ChefStyle/CopyrightCommentFormat:
+  Enabled: true
