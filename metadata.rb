@@ -6,7 +6,6 @@ source_url       'https://github.com/osuosl-cookbooks/yum-cron'
 license          'Apache-2.0'
 chef_version     '>= 14.0'
 description      'Installs/Configures yum-cron'
-long_description 'Installs/Configures yum-cron'
 version          '1.1.1'
 
 supports         'centos', '~> 6.0'

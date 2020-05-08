@@ -88,7 +88,11 @@ describe 'yum-cron::default' do
           end
         end
         it do
-          expect(chef_run).to create_template('/etc/yum/yum-cron-hourly.conf')
+          expect(chef_run).to create_template('/etc/yum/yum-cron-hourly.conf').with(
+            owner: 'root',
+            group: 'root',
+            mode: '640'
+          )
         end
         it do
           expect(chef_run).to_not create_template('/etc/sysconfig/yum-cron')

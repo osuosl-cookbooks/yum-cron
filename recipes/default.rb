@@ -1,9 +1,9 @@
 #
-# Cookbook Name:: yum-cron
+# Cookbook:: yum-cron
 # Recipe:: default
 # Author:: Oregon State University (<chef@osuosl.org>)
 #
-# Copyright (C) 2015 Oregon State University
+# Copyright:: (C) 2015 Oregon State University
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ package 'yum-cron'
   template node['yum-cron']["#{t}_conf"] do
     owner 'root'
     group 'root'
-    mode 0640
+    mode '640'
     if node['platform_version'].to_i > 6
       variables(
         commands: node['yum-cron'][t]['commands'],
