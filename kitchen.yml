@@ -5,8 +5,7 @@ provisioner:
   name: chef_solo
   enforce_idempotency: true
   multiple_converge: 2
-  solo_rb:
-    treat_deprecation_warnings_as_errors: true
+  deprecations_as_errors: true
 
 suites:
   - name: default
