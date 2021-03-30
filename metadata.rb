@@ -8,6 +8,4 @@ chef_version     '>= 14.0'
 description      'Installs/Configures yum-cron'
 version          '1.2.1'
 
-supports         'centos', '~> 6.0'
 supports         'centos', '~> 7.0'
-supports         'centos', '~> 8.0'

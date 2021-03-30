@@ -11,11 +11,6 @@ CENTOS_7 = {
   version: '7',
 }.freeze
 
-CENTOS_6 = {
-  platform: 'centos',
-  version: '6',
-}.freeze
-
 RSpec.configure do |config|
   config.log_level = :warn
 end
