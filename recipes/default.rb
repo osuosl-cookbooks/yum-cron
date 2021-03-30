@@ -3,7 +3,7 @@
 # Recipe:: default
 # Author:: Oregon State University (<chef@osuosl.org>)
 #
-# Copyright:: 2015-2020, Oregon State University
+# Copyright:: 2015-2021, Oregon State University
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,15 +29,13 @@ package 'yum-cron'
     owner 'root'
     group 'root'
     mode '640'
-    if node['platform_version'].to_i > 6
-      variables(
-        commands: node['yum-cron'][t]['commands'],
-        emitters: node['yum-cron'][t]['emitters'],
-        email: node['yum-cron'][t]['email'],
-        groups: node['yum-cron'][t]['groups'],
-        base: node['yum-cron'][t]['base']
-      )
-    end
+    variables(
+      commands: node['yum-cron'][t]['commands'],
+      emitters: node['yum-cron'][t]['emitters'],
+      email: node['yum-cron'][t]['email'],
+      groups: node['yum-cron'][t]['groups'],
+      base: node['yum-cron'][t]['base']
+    )
     notifies :restart, 'service[yum-cron]', :delayed
   end
 end

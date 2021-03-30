@@ -72,33 +72,4 @@ when 7
     its('commands.apply_updates') { should match 'no' }
     its('commands.random_sleep') { should match '15' }
   end
-when 6
-  describe package('yum-cron') do
-    it { should be_installed }
-  end
-
-  describe service('yum-cron') do
-    it { should be_enabled }
-    it { should be_running }
-  end
-
-  describe file('/etc/cron.daily/0yum.cron') do
-    it { should be_file }
-    it { should be_executable }
-  end
-
-  describe file('/etc/sysconfig/yum-cron') do
-    its('content') { should match /CHECK_ONLY="no"/ }
-    its('content') { should match /CHECK_FIRST="no"/ }
-    its('content') { should match /DOWNLOAD_ONLY="no"/ }
-    its('content') { should match /ERROR_LEVEL="0"/ }
-    its('content') { should match /DEBUG_LEVEL="0"/ }
-    its('content') { should match /RANDOMWAIT="60"/ }
-    its('content') { should match /MAILTO="root"/ }
-    its('content') { should match /SYSTEMNAME=""/ }
-    its('content') { should match /DAYS_OF_WEEK="0123456"/ }
-    its('content') { should match /CLEANDAY="0"/ }
-    its('content') { should match /SERVICE_WAITS="yes"/ }
-    its('content') { should match /SERVICE_WAIT_TIME="300"/ }
-  end
 end

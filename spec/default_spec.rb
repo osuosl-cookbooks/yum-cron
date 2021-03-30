@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'yum-cron::default' do
-  [CENTOS_8, CENTOS_7, CENTOS_6].each do |pltfrm|
+  [CENTOS_8, CENTOS_7].each do |pltfrm|
     describe "on #{pltfrm[:platform]} #{pltfrm[:version]}" do
       cached(:chef_run) do
         ChefSpec::SoloRunner.new(pltfrm).converge(described_recipe)

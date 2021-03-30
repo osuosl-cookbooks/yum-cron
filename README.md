@@ -8,7 +8,6 @@ system.
 
 ## Supported Platforms
 
-* CentOS 6.6
 * CentOS 7.0
 
 ## Attributes
