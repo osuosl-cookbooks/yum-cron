@@ -1,3 +1,7 @@
+3.0.0 (2021-04-08)
+------------------
+- Update Chef dependency to >= 16
+
 2.0.0 (2021-03-30)
 ------------------
 - Remove Centos 6 from this Cookbook
