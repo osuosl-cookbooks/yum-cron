@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe 'yum-cron::default' do
-  [CENTOS_8, CENTOS_7].each do |pltfrm|
+  [ALMA_8, CENTOS_7].each do |pltfrm|
     describe "on #{pltfrm[:platform]} #{pltfrm[:version]}" do
       cached(:chef_run) do
         ChefSpec::SoloRunner.new(pltfrm).converge(described_recipe)
       end
 
       case pltfrm
-      when CENTOS_8
+      when ALMA_8
         it do
           expect(chef_run).to_not install_package('yum-cron')
         end
