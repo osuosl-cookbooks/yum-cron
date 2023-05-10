@@ -1,3 +1,7 @@
+3.0.1 (2023-05-10)
+------------------
+- Replace CentOS Stream 8 with Alma 8
+
 3.0.0 (2021-04-08)
 ------------------
 - Update Chef dependency to >= 16
