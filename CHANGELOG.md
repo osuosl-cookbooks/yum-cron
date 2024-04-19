@@ -1,3 +1,7 @@
+3.0.2 (2024-04-19)
+------------------
+- Test Kitchen Config Refactor
+
 3.0.1 (2023-05-10)
 ------------------
 - Replace CentOS Stream 8 with Alma 8
