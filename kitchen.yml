@@ -1,11 +1,23 @@
 ---
+driver:
+  name: vagrant
+
 verifier:
   name: inspec
+
+transport:
+  name: rsync
+
 provisioner:
-  name: chef_solo
+  name: chef_infra
+  product_name: cinc
+  product_version: '17'
   enforce_idempotency: true
   multiple_converge: 2
   deprecations_as_errors: true
+
+platforms:
+  - name: centos-7
 
 suites:
   - name: default
